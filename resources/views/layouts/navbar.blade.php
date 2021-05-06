@@ -3,14 +3,14 @@
     <div class="container">
         <div class="row align-items-center">
 
-        <div class="col-6 col-lg-2">
+        <div class="col-10 col-lg-4">
             <h1 class="mb-0 site-logo"><a href="{{ url('') }}" class="mb-0"> <img src="{{ $site_logo }}" width="50px" alt=""> {{ setting('site.title') }}</a></h1>
         </div>
 
         @php
             $uri = $_SERVER['REQUEST_URI'];
         @endphp
-        <div class="col-12 col-md-10 d-none d-lg-block">
+        <div class="col-lg-8 d-none d-lg-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                     <li class="@if($uri == '/') active @endif"><a href="{{ url('') }}" class="nav-link">Inicio</a></li>
@@ -28,11 +28,10 @@
         </div>
 
 
-        <div class="col-6 d-inline-block d-lg-none ml-md-0 py-3" style="position: relative; top: 3px;">
+        <div class="col-2 d-inline-block d-lg-none ml-md-0 py-3" style="position: relative; top: 3px;">
 
-            <a href="#" class="burger site-menu-toggle js-menu-toggle" data-toggle="collapse"
-            data-target="#main-navbar">
-            <span></span>
+            <a href="#" class="burger site-menu-toggle js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span></span>
             </a>
         </div>
 

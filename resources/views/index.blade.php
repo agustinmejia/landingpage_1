@@ -41,17 +41,17 @@
         <div class="site-section">
             <div class="container">
 
-            <div class="row justify-content-center text-center mb-5">
-                <div class="col-md-5" data-aos="fade-up">
-                <h2 class="section-heading">{{ setting('features.title') }}</h2>
+                <div class="row justify-content-center text-center mb-5">
+                    <div class="col-md-5" data-aos="fade-up">
+                    <h2 class="section-heading">{{ setting('features.title') }}</h2>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                {!! setting('features.panel_1') !!}
-                {!! setting('features.panel_2') !!}
-                {!! setting('features.panel_3') !!}
-            </div>
+                <div class="row">
+                    {!! setting('features.panel_1') !!}
+                    {!! setting('features.panel_2') !!}
+                    {!! setting('features.panel_3') !!}
+                </div>
 
             </div>
         </div> <!-- .site-section -->
@@ -119,6 +119,53 @@
                 </div>
             </div>
         </div> <!-- .site-section -->
+
+        @php
+            $image_alt = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22246%22%20height%3D%22160%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20246%20160%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1793e5e14ea%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A12pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1793e5e14ea%22%3E%3Crect%20width%3D%22246%22%20height%3D%22160%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2292.25%22%20y%3D%2285.1%22%3E246x160%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E';
+        @endphp
+        @php
+            $products = App\Models\Product::limit(6)->get();
+        @endphp
+        @if(count($products))
+        <div class="site-section border-top border-bottom">
+            <div class="container">
+                <div class="row justify-content-center text-center mb-5">
+                    <div class="col-md-12" data-aos="fade-up">
+                        <h2 class="section-heading">Nuestros productos</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach ($products as $item)
+                        @php
+                            if ($item->images) {
+                                $images = json_decode($item->images);
+                            }
+                        @endphp
+                        <div class="col-md-4 mb-5">
+                            <div class="card">
+                                <a href="{{ url('product/'.$item->slug) }}"><img class="card-img-top" src="{{ count($images) > 0 ? asset('storage/'.str_replace(".", "-cropped.", $images[0])) : $image_alt }}" alt="{{ $item->name }}" width="100%"></a>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $item->name }}</h5>
+                                    <p class="card-text">{{ $item->description }}</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6>{{ $item->price }} Bs. &nbsp; @if ($item->old_price) <small><del class="text-danger">{{ $item->old_price }} Bs.</del></small> @endif </h6>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <a href="{{ url('product/'.$item->slug) }}" class="btn btn-success"><small>Ver detalles</small> <span class="icofont-eye-alt"></span> </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @php
+                            $images = [];
+                        @endphp
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        @endif 
 
         @php
             $customers = App\Models\Customer::all();

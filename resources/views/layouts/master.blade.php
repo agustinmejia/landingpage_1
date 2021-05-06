@@ -31,6 +31,8 @@
         <!-- Template Main CSS File -->
         <link href="{{ asset('landingpage/css/style.css') }}" rel="stylesheet">
 
+        @yield('css')
+
     </head>
 
 <body>
@@ -74,7 +76,7 @@
             
         });
     </script>
-
+    @yield('javascript')
 </body>
 
 </html>

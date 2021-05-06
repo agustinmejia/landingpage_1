@@ -20,6 +20,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/sections', [HomeController::class, 'sections']);
 Route::get('/contact', [HomeController::class, 'contact']);
+Route::get('/product/{slug}', [HomeController::class, 'product_details']);
 
 
 Route::group(['prefix' => 'admin'], function () {

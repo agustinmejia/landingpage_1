@@ -20,6 +20,7 @@ class CreatePeopleTable extends Migration
             $table->string('avatar')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

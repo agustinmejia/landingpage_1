@@ -68,13 +68,8 @@
                             <div class="validate"></div>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="name">Email</label>
+                            <label for="name">Tu Email</label>
                             <input type="email" class="form-control" name="email" id="email" data-rule="email" data-msg="Please enter a valid email" />
-                            <div class="validate"></div>
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <label for="name">Título</label>
-                            <input type="text" class="form-control" name="subject" id="subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                             <div class="validate"></div>
                         </div>
                         <div class="col-md-12 form-group">
@@ -91,7 +86,7 @@
                         </div>
         
                         <div class="col-md-6 form-group">
-                            <input type="submit" class="btn btn-primary d-block w-100" value="Send Message">
+                            <input type="submit" class=" btn-custom btn-primary d-block w-100" value="Eviar mensaje">
                         </div>
                         </div>
         
