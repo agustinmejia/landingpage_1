@@ -3,11 +3,9 @@
 
     <head>
         <meta charset="utf-8">
-        <title>{{ setting('site.title') }} | Bienvenido</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="keywords">
-        <meta content="" name="description">
 
+        @yield('meta-datos')
 
         <!-- Favicons -->
         @php
@@ -36,9 +34,10 @@
     </head>
 
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v10.0" nonce="dgqk18Kz"></script>
 
     <div class="site-wrap">
-
         <div class="site-mobile-menu site-navbar-target">
             <div class="site-mobile-menu-header">
                 <div class="site-mobile-menu-close mt-3">

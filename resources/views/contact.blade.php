@@ -1,5 +1,14 @@
 @extends('layouts.master')
 
+@section('meta-datos')
+    <title>{{ setting('site.title') }} | Cantacto</title>
+    <meta property="og:url"           content="{{ url('/') }}" />
+    <meta property="og:type"          content="E-Commerce" />
+    <meta property="og:title"         content="{{ setting('site.title') }}" />
+    <meta property="og:description"   content="{{ setting('site.description') }}" />
+    <meta property="og:image"         content="{{ asset('storage').'/'.setting('site.logo') }}" />
+@endsection
+
 @section('content')
     <main id="main">
         <div class="hero-section inner-page">
