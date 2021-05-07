@@ -55,7 +55,7 @@
                                 <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a> --}}
                             </article>
                         </aside>
-                        @if (!empty(!$product->details_long))
+                        @if (!empty($product->details_long))
                         <aside class="col-sm-12">
                             {!! $product->details_long !!}
                         </aside>

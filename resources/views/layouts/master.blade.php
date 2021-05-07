@@ -29,6 +29,17 @@
         <!-- Template Main CSS File -->
         <link href="{{ asset('landingpage/css/style.css') }}" rel="stylesheet">
 
+        @php
+            $background = setting('banner.principal') ? asset('storage/'.setting('banner.principal')) : url('landingpage/img/hero-bg.jpg')
+        @endphp
+
+        <style>
+            .hero-section {
+                background: linear-gradient(to right, rgba(32, 0, 1, 0.8) 0%, rgba(142, 2, 1, 0.8) 100%), url("{{ $background }}");
+                position: relative;
+            }
+        </style>
+
         @yield('css')
 
     </head>
