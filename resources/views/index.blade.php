@@ -158,7 +158,7 @@
                                     <p class="card-text">{{ $item->description }}</p>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <h6>{{ $item->price }} Bs. &nbsp; @if ($item->old_price) <small><del class="text-danger">{{ $item->old_price }} Bs.</del></small> @endif </h6>
+                                            @if ($item->price) <h6>{{ $item->price }} Bs. @endif &nbsp; @if ($item->old_price) <small><del class="text-danger">{{ $item->old_price }} Bs.</del></small> @endif </h6>
                                         </div>
                                         <div class="col-md-6 text-right">
                                             <a href="{{ url('product/'.$item->slug) }}" class="btn btn-success"><small>Ver detalles</small> <span class="icofont-eye-alt"></span> </a>

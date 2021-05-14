@@ -27,22 +27,24 @@
                         <aside class="col-sm-5 border-right">
                             <article class="gallery-wrap">
                                 <div class="img-big-wrap">
-                                    <a href="#"><img src="{{ count($images) > 0 ? asset('storage/'.$images[0]) : $image_alt }}" style="width: 100%"></a>
-                                </div> <!-- slider-product.// -->
+                                    <a href="#"><img class="main-image" src="{{ count($images) > 0 ? asset('storage/'.$images[0]) : $image_alt }}" style="width: 100%"></a>
+                                </div>
                                 <div class="img-small-wrap">
                                     @foreach ($images as $image)
-                                    <div class="item-gallery"> <img src="{{ asset('storage/'.str_replace(".", "-cropped.", $image)) }}"> </div>
+                                    <div class="item-gallery" data-src="{{ asset('storage/'.$image) }}"> <img src="{{ asset('storage/'.str_replace(".", "-cropped.", $image)) }}"> </div>
                                     @endforeach
-                                </div> <!-- slider-nav.// -->
-                                </article> <!-- gallery-wrap .end// -->
+                                </div>
+                                </article>
                         </aside>
                         <aside class="col-sm-7">
                             <article class="card-body p-5">
                                 <h3 class="title mb-3">{{ $product->name }}</h3>
                             
                                 <p class="price-detail-wrap"> 
-                                    <span class="price h3 text-primary"> 
+                                    <span class="price h3 text-primary">
+                                        @if ($product->price)
                                         <span class="currency"></span><span class="num">{{ $product->price }}</span> Bs.
+                                        @endif
                                         @if ($product->old_price)
                                         <small><del class="text-danger">{{ $product->old_price }} Bs.</del></small>
                                         @endif
@@ -108,6 +110,11 @@
     <script>
         $(document).ready(function(){
             $('.sticky-wrapper').addClass('is-sticky');
+
+            $('.item-gallery').click(function(){
+                let src = $(this).data('src');
+                $('.main-image').attr('src', src);
+            });
 
             $(window).scroll(function (event) {
                 var scroll = $(window).scrollTop();
